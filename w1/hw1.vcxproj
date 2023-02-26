@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D298C1DA-6B28-30DF-A264-BA41D17BC824}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>hw1</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">hw1.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">hw1</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">hw1.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">hw1</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">hw1.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">hw1</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">hw1.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">hw1</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 -g /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BX_CONFIG_DEBUG=1;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BX_CONFIG_DEBUG=1;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\3rdParty\bgfx.cmake\Debug\bgfx.lib;..\3rdParty\bgfx.cmake\Debug\bx.lib;..\3rdParty\bgfx.cmake\Debug\bimg.lib;..\3rdParty\flecs\Debug\flecs.lib;..\3rdParty\glfw\src\Debug\glfw3.lib;..\3rdParty\bgfx.cmake\Debug\example-common.lib;wsock32.lib;ws2_32.lib;..\3rdParty\bgfx.cmake\Debug\bgfx.lib;..\3rdParty\bgfx.cmake\Debug\bimg.lib;..\3rdParty\bgfx.cmake\Debug\astc-codec.lib;..\3rdParty\bgfx.cmake\Debug\astc.lib;..\3rdParty\bgfx.cmake\Debug\edtaa3.lib;..\3rdParty\bgfx.cmake\Debug\etc1.lib;..\3rdParty\bgfx.cmake\Debug\etc2.lib;..\3rdParty\bgfx.cmake\Debug\iqa.lib;..\3rdParty\bgfx.cmake\Debug\squish.lib;..\3rdParty\bgfx.cmake\Debug\nvtt.lib;..\3rdParty\bgfx.cmake\Debug\pvrtc.lib;..\3rdParty\bgfx.cmake\Debug\tinyexr.lib;..\3rdParty\bgfx.cmake\Debug\dear-imgui.lib;..\3rdParty\bgfx.cmake\Debug\bx.lib;psapi.lib;..\3rdParty\bgfx.cmake\Debug\meshoptimizer.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/Debug/hw1.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/Debug/hw1.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 -g /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BX_CONFIG_DEBUG=0;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BX_CONFIG_DEBUG=0;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\3rdParty\bgfx.cmake\Release\bgfx.lib;..\3rdParty\bgfx.cmake\Release\bx.lib;..\3rdParty\bgfx.cmake\Release\bimg.lib;..\3rdParty\flecs\Release\flecs.lib;..\3rdParty\glfw\src\Release\glfw3.lib;..\3rdParty\bgfx.cmake\Release\example-common.lib;wsock32.lib;ws2_32.lib;..\3rdParty\bgfx.cmake\Release\bgfx.lib;..\3rdParty\bgfx.cmake\Release\bimg.lib;..\3rdParty\bgfx.cmake\Release\astc-codec.lib;..\3rdParty\bgfx.cmake\Release\astc.lib;..\3rdParty\bgfx.cmake\Release\edtaa3.lib;..\3rdParty\bgfx.cmake\Release\etc1.lib;..\3rdParty\bgfx.cmake\Release\etc2.lib;..\3rdParty\bgfx.cmake\Release\iqa.lib;..\3rdParty\bgfx.cmake\Release\squish.lib;..\3rdParty\bgfx.cmake\Release\nvtt.lib;..\3rdParty\bgfx.cmake\Release\pvrtc.lib;..\3rdParty\bgfx.cmake\Release\tinyexr.lib;..\3rdParty\bgfx.cmake\Release\dear-imgui.lib;..\3rdParty\bgfx.cmake\Release\bx.lib;psapi.lib;..\3rdParty\bgfx.cmake\Release\meshoptimizer.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/Release/hw1.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/Release/hw1.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 -g /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BX_CONFIG_DEBUG=0;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BX_CONFIG_DEBUG=0;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\3rdParty\bgfx.cmake\MinSizeRel\bgfx.lib;..\3rdParty\bgfx.cmake\MinSizeRel\bx.lib;..\3rdParty\bgfx.cmake\MinSizeRel\bimg.lib;..\3rdParty\flecs\MinSizeRel\flecs.lib;..\3rdParty\glfw\src\MinSizeRel\glfw3.lib;..\3rdParty\bgfx.cmake\MinSizeRel\example-common.lib;wsock32.lib;ws2_32.lib;..\3rdParty\bgfx.cmake\MinSizeRel\bgfx.lib;..\3rdParty\bgfx.cmake\MinSizeRel\bimg.lib;..\3rdParty\bgfx.cmake\MinSizeRel\astc-codec.lib;..\3rdParty\bgfx.cmake\MinSizeRel\astc.lib;..\3rdParty\bgfx.cmake\MinSizeRel\edtaa3.lib;..\3rdParty\bgfx.cmake\MinSizeRel\etc1.lib;..\3rdParty\bgfx.cmake\MinSizeRel\etc2.lib;..\3rdParty\bgfx.cmake\MinSizeRel\iqa.lib;..\3rdParty\bgfx.cmake\MinSizeRel\squish.lib;..\3rdParty\bgfx.cmake\MinSizeRel\nvtt.lib;..\3rdParty\bgfx.cmake\MinSizeRel\pvrtc.lib;..\3rdParty\bgfx.cmake\MinSizeRel\tinyexr.lib;..\3rdParty\bgfx.cmake\MinSizeRel\dear-imgui.lib;..\3rdParty\bgfx.cmake\MinSizeRel\bx.lib;psapi.lib;..\3rdParty\bgfx.cmake\MinSizeRel\meshoptimizer.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/MinSizeRel/hw1.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/MinSizeRel/hw1.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 -g /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BX_CONFIG_DEBUG=0;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BX_CONFIG_DEBUG=0;BGFX_CONFIG_MULTITHREADED=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\3rdparty;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx\include\compat\msvc;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\include;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\examples\common;C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\3rdParty\bgfx.cmake\RelWithDebInfo\bgfx.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\bx.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\bimg.lib;..\3rdParty\flecs\RelWithDebInfo\flecs.lib;..\3rdParty\glfw\src\RelWithDebInfo\glfw3.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\example-common.lib;wsock32.lib;ws2_32.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\bgfx.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\bimg.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\astc-codec.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\astc.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\edtaa3.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\etc1.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\etc2.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\iqa.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\squish.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\nvtt.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\pvrtc.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\tinyexr.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\dear-imgui.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\bx.lib;psapi.lib;..\3rdParty\bgfx.cmake\RelWithDebInfo\meshoptimizer.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/RelWithDebInfo/hw1.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/fear_/Documents/Prog/ai_roguelike/w1/RelWithDebInfo/hw1.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fear_/Documents/Prog/ai_roguelike -BC:/Users/fear_/Documents/Prog/ai_roguelike --check-stamp-file C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fear_/Documents/Prog/ai_roguelike -BC:/Users/fear_/Documents/Prog/ai_roguelike --check-stamp-file C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fear_/Documents/Prog/ai_roguelike -BC:/Users/fear_/Documents/Prog/ai_roguelike --check-stamp-file C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fear_/Documents/Prog/ai_roguelike -BC:/Users/fear_/Documents/Prog/ai_roguelike --check-stamp-file C:/Users/fear_/Documents/Prog/ai_roguelike/w1/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\fear_\Documents\Prog\ai_roguelike\w1\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\aiLibrary.cpp" />
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\app.cpp" />
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\main.cpp" />
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\protocol.cpp" />
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\roguelike.cpp" />
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\stateMachine.cpp" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\aiLibrary.h" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\app.h" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\ecsTypes.h" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\entity.h" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\protocol.h" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\roguelike.h" />
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\stateMachine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\ZERO_CHECK.vcxproj">
+      <Project>{8512D3F6-4131-369B-A913-AB5C3ACAB0B3}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\astc.vcxproj">
+      <Project>{21358E1D-82C5-3E32-A603-7BA7D8D48835}</Project>
+      <Name>astc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\astc-codec.vcxproj">
+      <Project>{517D778D-B7B3-3E79-843A-2562509C30A2}</Project>
+      <Name>astc-codec</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bgfx.vcxproj">
+      <Project>{DFAB1845-6648-3706-886A-F1A02102AEAE}</Project>
+      <Name>bgfx</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bimg.vcxproj">
+      <Project>{8A32682A-0ABC-3990-AA71-4084B1286C69}</Project>
+      <Name>bimg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\bx.vcxproj">
+      <Project>{03115F13-B16D-3004-BF75-E3EAA2C4A2D2}</Project>
+      <Name>bx</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\dear-imgui.vcxproj">
+      <Project>{D381B7CD-BE3B-38F1-8349-AE7AEF5503E1}</Project>
+      <Name>dear-imgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\edtaa3.vcxproj">
+      <Project>{A7532E8E-021F-380C-AF51-3CC2AC4A21AE}</Project>
+      <Name>edtaa3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\etc1.vcxproj">
+      <Project>{1E481125-3C76-3C10-B68A-5A7D9AD3315A}</Project>
+      <Name>etc1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\etc2.vcxproj">
+      <Project>{2ACEA788-E849-3392-8563-54701DD8F8E1}</Project>
+      <Name>etc2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\example-common.vcxproj">
+      <Project>{9CB2D09E-D456-302C-9F69-B1F57580586C}</Project>
+      <Name>example-common</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\flecs\flecs.vcxproj">
+      <Project>{57F3CB31-966C-35CB-9C73-8E27E92D917A}</Project>
+      <Name>flecs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\glfw\src\glfw.vcxproj">
+      <Project>{130DD4D6-3FDE-3FA4-89C9-57A02F4CA931}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\iqa.vcxproj">
+      <Project>{6387FFEF-FBE4-3DF8-8391-B465E69DA8CE}</Project>
+      <Name>iqa</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\meshoptimizer.vcxproj">
+      <Project>{C2011497-F25F-3016-BBBB-C1642D2793F5}</Project>
+      <Name>meshoptimizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\nvtt.vcxproj">
+      <Project>{1D750C4B-BBE7-34CE-9BF9-8F4409085C8F}</Project>
+      <Name>nvtt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\pvrtc.vcxproj">
+      <Project>{0C94B200-B548-3C40-816F-2F9D13B8F545}</Project>
+      <Name>pvrtc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\squish.vcxproj">
+      <Project>{1C635124-7267-32AF-B426-AE63BCE5D659}</Project>
+      <Name>squish</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\fear_\Documents\Prog\ai_roguelike\3rdParty\bgfx.cmake\tinyexr.vcxproj">
+      <Project>{8350DF48-69B9-3A09-AA02-739F135B8F72}</Project>
+      <Name>tinyexr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

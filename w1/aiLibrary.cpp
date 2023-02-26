@@ -4,8 +4,22 @@
 #include <bx/rng.h>
 #include <cfloat>
 #include <cmath>
+#include <iostream>
 
 static bx::RngShr3 rng;
+
+class StateMachineState : public State
+{
+    std::unique_ptr<StateMachine> m_state_machine;
+public:
+    StateMachineState(std::unique_ptr<StateMachine>&& sm) : m_state_machine(std::move(sm)) {}
+    void enter() const override {}
+    void exit() const override {}
+    void act(float /*dt*/, flecs::world& ecs, flecs::entity entity) const override 
+    {
+        m_state_machine->act(0.f, ecs, entity);
+    }
+};
 
 class AttackEnemyState : public State
 {
@@ -128,6 +142,110 @@ public:
   void act(float/* dt*/, flecs::world &ecs, flecs::entity entity) const override {}
 };
 
+class FolloweeCloseTransition : public StateTransition
+{
+    float threshold;
+public:
+    FolloweeCloseTransition(float in_thres) : threshold(in_thres) {}
+    bool isAvailable(flecs::world&, flecs::entity entity) const override
+    {
+        bool reached = false;
+        entity.get([&](const FollowTarget& target, const Position& pos)
+        {
+            target.target.get([&](const Position& fpos)
+            {
+                auto dx = pos.x - fpos.x;
+                auto dy = pos.y - fpos.y;
+                reached = threshold * threshold > dx * dx + dy * dy;
+            });
+        });
+        return reached;
+    }
+};
+
+class HealState : public State
+{
+public:
+    void enter() const override {}
+    void exit() const override {}
+    void act(float /*dt*/, flecs::world& ecs, flecs::entity entity) const override
+    {
+        entity.set([&](const TickCount& count, Hitpoints& hitpoints, HealCooldown& cooldown, Color& color, Action& a)
+        {
+            a.action = EA_NOP;
+            color.color = 0xffff0000 + int((hitpoints.hitpoints / 100.0f) * 255.0f);
+            if (cooldown.next <= count.count)
+            {
+                a.action = EA_HEAL;
+            }
+        });
+    }
+};
+
+class SleepState : public State
+{
+public:
+    void enter() const override { std::cout << "Sleeping...\n"; }
+    void exit() const override {}
+    void act(float /*dt*/, flecs::world& ecs, flecs::entity entity) const override 
+    {
+        entity.set([&](SleepinessLevel& sleep, Action& a) 
+        {
+            sleep.value += 15.0f;
+            a.action = EA_SLEEP;
+            std::cout << "Sleeping...\n";
+        });
+    }
+};
+class SearchHomeState : public State
+{
+public:
+    void enter() const override {}
+    void exit() const override { std::cout << "no longer searching home\n"; }
+    void act(float /*dt*/, flecs::world& ecs, flecs::entity entity) const override 
+    {
+        entity.set([&](Position& pos, HomePosition& hpos, Action& a) 
+        {
+            a.action = move_towards(pos, hpos);
+            std::cout << "Searching home...\n";
+        });
+    }
+};
+class Eat : public State
+{
+public:
+    void enter() const override {
+        std::cout << "Eating!\n";
+    }
+    void exit() const override {}
+    void act(float /*dt*/, flecs::world& ecs, flecs::entity entity) const override 
+    {
+        entity.set([&](HungerLevel& hunger, Action& a) \
+        {
+            hunger.value += 15.0f;
+            a.action = EA_EAT;
+            std::cout << "Saturation: " << hunger.value << '\n';
+        });
+    }
+};
+
+class SearchFood : public State
+{
+public:
+    void enter() const override {}
+    void exit() const override { std::cout << "no longer searching food\n"; }
+    void act(float /*dt*/, flecs::world& ecs, flecs::entity entity) const override 
+    {
+        entity.set([&](Position& pos, FoodSourceTarget& hpos, Action& a) 
+        {
+            a.action = move_towards(pos, hpos);
+            std::cout << "Searching food: " << pos.x << ' ' << pos.y
+                      << " to " << hpos.x << ' ' << hpos.y
+                      << " action: " << a.action << '\n';
+        });
+    }
+};
+
 class EnemyAvailableTransition : public StateTransition
 {
   float triggerDist;
@@ -207,6 +325,74 @@ public:
   }
 };
 
+template <typename Component>
+class CloseToPointTransition : public StateTransition
+{
+    float triggerDist;
+public:
+    CloseToPointTransition(float dist) : triggerDist(dist) {}
+    bool isAvailable(flecs::world&, flecs::entity entity) const override
+    {
+        bool reached = false;
+        entity.get([&](const Component& fpos, const Position& pos)
+            {
+                auto dx = pos.x - fpos.x;
+                auto dy = pos.y - fpos.y;
+                reached = triggerDist * triggerDist > dx * dx + dy * dy;
+            });
+        return reached;
+    }
+};
+
+class FoodCloseTransition : public CloseToPointTransition<FoodSourceTarget> 
+{
+    using CloseToPointTransition::CloseToPointTransition;
+};
+class HomeCloseTransition : public CloseToPointTransition<HomePosition> 
+{
+    using CloseToPointTransition::CloseToPointTransition;
+};
+
+template<typename Component>
+class CompareThreshold : public StateTransition 
+{
+protected:
+    float threshold;
+public:
+    CompareThreshold(float threshold) : threshold(threshold) {}
+    bool isAvailable(flecs::world&, flecs::entity entity) const override 
+    {
+        bool result = false;
+        entity.get([&](const Component& cmp) 
+        {
+            result = cmp.value < threshold;
+        });
+        return result;
+    }
+};
+
+class HungryTransition : public CompareThreshold<HungerLevel> 
+{
+    using CompareThreshold::CompareThreshold;
+    bool isAvailable(flecs::world& w, flecs::entity entity) const override 
+    {
+        auto res = this->CompareThreshold::isAvailable(w, entity);
+        std::cout << "Hungry transition: " << threshold << " res: " << res << '\n';
+        return res;
+    }
+};
+class SleepyTransition : public CompareThreshold<SleepinessLevel> 
+{
+    using CompareThreshold::CompareThreshold;
+    bool isAvailable(flecs::world& w, flecs::entity entity) const override 
+    {
+        auto res = this->CompareThreshold::isAvailable(w, entity);
+        std::cout << "Sleepy transition: " << threshold << " res: " << res << '\n';
+        return res;
+    }
+};
+
+
 
 // states
 State *create_attack_enemy_state()
@@ -234,6 +420,32 @@ State *create_nop_state()
   return new NopState();
 }
 
+State *create_heal_state()
+{
+    return new HealState();
+}
+
+State *create_sleep_state()
+{
+    return new SleepState();
+}
+State *create_search_home_state()
+{
+    return new SearchHomeState();
+}
+State *create_eat_state()
+{
+    return new Eat();
+}
+State *create_search_food_state()
+{
+    return new SearchFood();
+}
+State *create_sm_state(std::unique_ptr<StateMachine>&& sm)
+{
+    return new StateMachineState(std::move(sm));
+}
+
 // transitions
 StateTransition *create_enemy_available_transition(float dist)
 {
@@ -257,5 +469,27 @@ StateTransition *create_negate_transition(StateTransition *in)
 StateTransition *create_and_transition(StateTransition *lhs, StateTransition *rhs)
 {
   return new AndTransition(lhs, rhs);
+}
+
+StateTransition* create_follower_close_transition(float thres)
+{
+    return new FolloweeCloseTransition(thres);
+}
+
+StateTransition *create_sleepy_transition(float thres)
+{
+    return new SleepyTransition(thres);
+}
+StateTransition *create_hungry_transition(float thres)
+{
+    return new HungryTransition(thres);
+}
+StateTransition *create_home_close_transition(float thres)
+{
+    return new HomeCloseTransition(thres);
+}
+StateTransition *create_food_close_transition(float thres)
+{
+    return new FoodCloseTransition(thres);
 }
 

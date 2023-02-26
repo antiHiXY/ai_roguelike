@@ -60,7 +60,10 @@ enum Actions
   EA_MOVE_UP,
   EA_MOVE_END,
   EA_ATTACK = EA_MOVE_END,
-  EA_NUM
+  EA_NUM,
+  EA_HEAL,
+  EA_EAT,
+  EA_SLEEP,
 };
 
 struct Action
@@ -83,6 +86,35 @@ struct HealAmount
 {
   float amount = 0.f;
 };
+
+struct EntityContainer 
+{
+    flecs::entity target;
+};
+
+struct FloatContainer 
+{
+    float value;
+};
+
+struct TickCount
+{
+    int count = 0;
+};
+
+struct ActionCooldown
+{
+    int cooldown = 0;
+    int next = 0;
+};
+
+struct HealCooldown : ActionCooldown {};
+struct FoodSourceTarget : Position {};
+struct HomePosition : Position {};
+struct HungerLevel : FloatContainer {};
+struct SleepinessLevel : FloatContainer {};
+struct HealTarget : EntityContainer {};
+struct FollowTarget : EntityContainer {};
 
 struct PowerupAmount
 {

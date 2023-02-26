@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\aiLibrary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\protocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\roguelike.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\stateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\aiLibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\ecsTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\protocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\roguelike.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\stateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\fear_\Documents\Prog\ai_roguelike\w1\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{930FDD51-7BDC-3578-80A2-EB903618797C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AB1C0B57-F9A4-3925-A1B1-4768132CDB18}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

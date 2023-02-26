@@ -4,6 +4,8 @@
 #include "stateMachine.h"
 #include "aiLibrary.h"
 #include "app.h"
+#include <iostream>
+#include <memory>
 
 //for scancodes
 #include <GLFW/glfw3.h>
@@ -28,16 +30,18 @@ static void add_patrol_attack_flee_sm(flecs::entity entity)
   });
 }
 
-static void add_patrol_flee_sm(flecs::entity entity)
+void construct_patrol_flee_sm(StateMachine& sm, float patrol_length = 3.0f) 
 {
-  entity.get([](StateMachine &sm)
-  {
-    int patrol = sm.addState(create_patrol_state(3.f));
+    int patrol = sm.addState(create_patrol_state(patrol_length));
     int fleeFromEnemy = sm.addState(create_flee_from_enemy_state());
 
-    sm.addTransition(create_enemy_available_transition(3.f), patrol, fleeFromEnemy);
+    sm.addTransition(create_enemy_available_transition(patrol_length), patrol, fleeFromEnemy);
     sm.addTransition(create_negate_transition(create_enemy_available_transition(5.f)), fleeFromEnemy, patrol);
-  });
+}
+
+static void add_patrol_flee_sm(flecs::entity entity)
+{
+    entity.get(construct_patrol_flee_sm);
 }
 
 static void add_attack_sm(flecs::entity entity)
@@ -46,6 +50,87 @@ static void add_attack_sm(flecs::entity entity)
   {
     sm.addState(create_move_to_enemy_state());
   });
+}
+
+void add_berserk_sm(flecs::entity entity)
+{
+    entity.get([](StateMachine& sm)
+    {
+        int patrol = sm.addState(create_patrol_state(3.f));
+        int moveToEnemy = sm.addState(create_move_to_enemy_state());
+        int moveToEnemyInfinite = sm.addState(create_move_to_enemy_state());
+
+        sm.addTransition(create_enemy_available_transition(3.f), patrol, moveToEnemy);
+        sm.addTransition(create_negate_transition(create_enemy_available_transition(5.f)), moveToEnemy, patrol);
+
+        sm.addTransition(create_hitpoints_less_than_transition(60.f), patrol, moveToEnemyInfinite);
+    });
+}
+
+void add_heal_sm(flecs::entity entity)
+{
+    entity.get([](StateMachine& sm)
+    {
+        int patrol = sm.addState(create_patrol_state(3.f));
+        int moveToEnemy = sm.addState(create_move_to_enemy_state());
+        int heal = sm.addState(create_heal_state());
+
+        sm.addTransition(create_enemy_available_transition(3.f), patrol, moveToEnemy);
+        sm.addTransition(create_negate_transition(create_enemy_available_transition(5.f)), moveToEnemy, patrol);
+
+        sm.addTransition(create_hitpoints_less_than_transition(60.f), patrol, heal);
+        sm.addTransition(create_hitpoints_less_than_transition(60.f), moveToEnemy, heal);
+
+        sm.addTransition(create_negate_transition(create_hitpoints_less_than_transition(100.f)), heal, patrol);
+    });
+}
+
+
+auto create_hunger_sm() 
+{
+    auto res = std::make_unique<StateMachine>();
+    auto search = res->addState(create_search_food_state());
+    auto eat = res->addState(create_eat_state());
+
+    res->addTransition(create_food_close_transition(1.0f), search, eat);
+    res->addTransition(create_negate_transition(create_follower_close_transition(2.0f)), eat, search);
+    return res;
+}
+
+auto create_sleep_sm() 
+{
+    auto res = std::make_unique<StateMachine>();
+    auto search = res->addState(create_search_home_state());
+    auto sleep = res->addState(create_sleep_state());
+
+    res->addTransition(create_home_close_transition(1.0f), search, sleep);
+    res->addTransition(create_negate_transition(create_home_close_transition(1.1f)), sleep, search);
+    return res;
+}
+
+auto create_wander_sm() 
+{
+    auto res = std::make_unique<StateMachine>();
+    construct_patrol_flee_sm(*res, 30.0f);
+    return res;
+}
+
+void add_villager_sm(flecs::entity entity)
+{
+    entity.get([](StateMachine& sm)
+        {
+            int wander = sm.addState(create_sm_state(create_wander_sm()));
+            int hunger = sm.addState(create_sm_state(create_hunger_sm()));
+            int sleep = sm.addState(create_sm_state(create_sleep_sm()));
+
+            sm.addTransition(create_hungry_transition(20.0f), wander, hunger);
+            sm.addTransition(create_negate_transition(create_hungry_transition(100.0f)), hunger, wander);
+            sm.addTransition(create_sleepy_transition(20.0f), wander, sleep);
+            sm.addTransition(create_negate_transition(create_sleepy_transition(80.0f)), sleep, wander);
+
+            sm.addTransition(create_enemy_available_transition(3.0f), hunger, wander);
+            sm.addTransition(create_enemy_available_transition(3.0f), sleep, wander);
+        });
 }
 
 static flecs::entity create_monster(flecs::world &ecs, int x, int y, uint32_t color)
@@ -86,6 +171,43 @@ static void create_heal(flecs::world &ecs, int x, int y, float amount)
     .set(Color{0xff4444ff});
 }
 
+static flecs::entity create_healing_monster(flecs::world& ecs, int x, int y)
+{
+    return ecs.entity()
+        .set(Position{ x, y })
+        .set(MovePos{ x, y })
+        .set(PatrolPos{ x, y })
+        .set(Hitpoints{ 100.f })
+        .set(Action{ EA_NOP })
+        .set(Color{ 0xffff00ff })
+        .set(StateMachine{})
+        .set(Team{ 1 })
+        .set(NumActions{ 1, 0 })
+        .set(HealCooldown{ 4 })
+        .set(HealTarget{})
+        .set(TickCount{})
+        .set(HealAmount{ 10.f })
+        .set(MeleeDamage{ 20.f });
+}
+
+static flecs::entity create_villager(flecs::world& ecs, int x, int y, uint32_t color, int food_x, int food_y)
+{
+    return ecs.entity()
+        .set(MeleeDamage{ 0.f })
+        .set(Position{ x, y })
+        .set(MovePos{ x, y })
+        .set(Hitpoints{ 80.f })
+        .set(Action{ EA_NOP })
+        .set(Color{ color })
+        .set(StateMachine{})
+        .set(Team{ 0 })
+        .set(FoodSourceTarget{ food_x, food_y })
+        .set(HungerLevel{ 50.0f })
+        .set(SleepinessLevel{ 50.0f })
+        .set(HomePosition{ x, y })
+        .set(NumActions{ 1, 0 });
+}
+
 static void create_powerup(flecs::world &ecs, int x, int y, float amount)
 {
   ecs.entity()
@@ -119,13 +241,13 @@ static void register_roguelike_systems(flecs::world &ecs)
   ecs.system<const Position, const Color>()
     .each([&](const Position &pos, const Color color)
     {
-      DebugDrawEncoder dde;
-      dde.begin(0);
-      dde.push();
+        DebugDrawEncoder dde;
+        dde.begin(0);
+        dde.push();
         dde.setColor(color.color);
         dde.drawQuad(bx::Vec3(0, 0, 1), bx::Vec3(pos.x, pos.y, 0.f), 1.f);
-      dde.pop();
-      dde.end();
+        dde.pop();
+        dde.end();
     });
 }
 
@@ -138,8 +260,11 @@ void init_roguelike(flecs::world &ecs)
   add_patrol_attack_flee_sm(create_monster(ecs, 10, -5, 0xffee00ee));
   add_patrol_flee_sm(create_monster(ecs, -5, -5, 0xff111111));
   add_attack_sm(create_monster(ecs, -5, 5, 0xff00ff00));
+  add_berserk_sm(create_monster(ecs, 6, 6, 0xffffffff));
+  add_heal_sm(create_healing_monster(ecs, 7, 6));
 
   create_player(ecs, 0, 0);
+  add_villager_sm(create_villager(ecs, -1, -2, 0xffee00ee, 2, 2));
 
   create_powerup(ecs, 7, 7, 10.f);
   create_powerup(ecs, 10, -6, 10.f);
@@ -189,12 +314,30 @@ static void process_actions(flecs::world &ecs)
 {
   static auto processActions = ecs.query<Action, Position, MovePos, const MeleeDamage, const Team>();
   static auto checkAttacks = ecs.query<const MovePos, Hitpoints, const Team>();
+  static auto healQuery = ecs.query<const HealTarget, Hitpoints, const TickCount, HealCooldown, const HealAmount>();
   // Process all actions
   ecs.defer([&]
   {
     processActions.each([&](flecs::entity entity, Action &a, Position &pos, MovePos &mpos, const MeleeDamage &dmg, const Team &team)
     {
       Position nextPos = move_pos(pos, a.action);
+      if (a.action == EA_HEAL) 
+      {
+          auto target = *entity.get<HealTarget>();
+          auto hp = target.target.get<Hitpoints>();
+          if (hp == nullptr) 
+          {
+              return;
+          }
+
+          std::cout << "Heal: " << target.target.get<Hitpoints>()->hitpoints << '\n';
+          auto& amount = *entity.get<HealAmount>();
+          auto& cooldown = *entity.get<HealCooldown>();
+          auto& count = *entity.get<TickCount>();
+
+          entity.set<HealCooldown>({ cooldown.cooldown, cooldown.cooldown + count.count });
+          target.target.set<Hitpoints>({ hp->hitpoints + amount.amount });
+      }
       bool blocked = false;
       checkAttacks.each([&](flecs::entity enemy, const MovePos &epos, Hitpoints &hp, const Team &enemy_team)
       {
@@ -258,8 +401,33 @@ static void process_actions(flecs::world &ecs)
 void process_turn(flecs::world &ecs)
 {
   static auto stateMachineAct = ecs.query<StateMachine>();
+  static auto tickCountAct = ecs.query<TickCount>();
+  static auto hungerAct = ecs.query<HungerLevel, Hitpoints>();
+  static auto sleepinessAct = ecs.query<SleepinessLevel>();
   if (is_player_acted(ecs))
   {
+    ecs.defer([&]
+    {
+      tickCountAct.each([&](TickCount& count)
+      {
+        ++count.count;
+      });
+      sleepinessAct.each([&](SleepinessLevel& sleepiness) 
+      {
+          sleepiness.value -= 0.7f;
+      });
+      hungerAct.each([&](HungerLevel& hunger, Hitpoints& hp)
+      {
+          if (hunger.value >= 0.0f) 
+          {
+              hunger.value -= 1.0f;
+          }
+          else 
+          {
+              hp.hitpoints -= 1.0f;
+          }
+      });
+    });
     if (upd_player_actions_count(ecs))
     {
       // Plan action for NPCs
