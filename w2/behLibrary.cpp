@@ -197,6 +197,66 @@ struct Patrol : public BehNode
   }
 };
 
+struct FindPickUp : public BehNode
+{
+  size_t nextPickUpBb = size_t(-1);
+  FindPickUp(flecs::entity entity, const char* bb_name)
+  {
+    nextPickUpBb = reg_entity_blackboard_var<flecs::entity>(entity, bb_name);
+  }
+
+  BehResult update(flecs::world& ecs, flecs::entity entity, Blackboard& bb) override
+  {
+    BehResult res = BEH_FAIL;
+    static auto pickUpQuery = ecs.query<const Position, const IsPickUp>();
+    entity.set([&](const Position& pos)
+    {
+      float closestDist = FLT_MAX;
+      Position closestPos;
+      flecs::entity closestPickUpEntity;
+      pickUpQuery.each([&](flecs::entity pickUpEntity, const Position& hpos, const IsPickUp&)
+      {
+        float curDist = dist(hpos, pos);
+        if (curDist < closestDist)
+        {
+          closestPos = hpos;
+          closestDist = curDist;
+          closestPickUpEntity = pickUpEntity;
+        }
+      });
+      if (closestDist < FLT_MAX)
+      {
+        bb.set<flecs::entity>(nextPickUpBb, closestPickUpEntity);
+        res = BEH_SUCCESS;
+      }
+    });
+    return res;
+  }
+};
+
+struct CheckWaypoint : public BehNode
+{
+  size_t entityWaypointBb = size_t(-1);
+  CheckWaypoint(flecs::entity entity, const char* bb_name)
+    : entityWaypointBb(reg_entity_blackboard_var<flecs::entity>(entity, bb_name)) {}
+
+  BehResult update(flecs::world&, flecs::entity entity, Blackboard& bb) override
+  {
+    entity.set([&](const Position& pos)
+    {
+      flecs::entity waypoint = bb.get<flecs::entity>(entityWaypointBb);
+      waypoint.get([&](const Position& wpos, const Waypoint& nextWaypoint)
+      {
+        if (wpos == pos)
+        {
+          bb.set<flecs::entity>(entityWaypointBb, nextWaypoint.next);
+        }
+      });
+    });
+    return BEH_SUCCESS;
+  }
+};
+
 
 BehNode *sequence(const std::vector<BehNode*> &nodes)
 {
@@ -237,5 +297,15 @@ BehNode *flee(flecs::entity entity, const char *bb_name)
 BehNode *patrol(flecs::entity entity, float patrol_dist, const char *bb_name)
 {
   return new Patrol(entity, patrol_dist, bb_name);
+}
+
+BehNode *find_pick_up(flecs::entity entity, const char* bb_name)
+{
+  return new FindPickUp(entity, bb_name);
+}
+
+BehNode *check_waypoint(flecs::entity entity, const char* bb_name)
+{
+  return new CheckWaypoint(entity, bb_name);
 }
 
